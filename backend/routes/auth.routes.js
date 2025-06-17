@@ -1,8 +1,10 @@
 import e from "express";
-import { login, signUp } from "../controllers/auth.controller.js";
+import { login, signUp, logout } from "../controllers/auth.controller.js";
+
 const router = e.Router();
 
-router.get("/login", login);
+router.post("/login", login);
 router.post("/signUp", signUp);
+router.post("/logout", logout);
 
 export default router;
