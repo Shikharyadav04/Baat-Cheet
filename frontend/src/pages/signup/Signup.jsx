@@ -99,9 +99,13 @@ const Signup = () => {
             Already have an account{" "}
           </Link>
           <div className="w-full flex justify-center mt-8">
-            <button className="btn btn-soft btn-primary w-5/12" type="submit">
-              Sign Up
-            </button>
+            {!loading ? (
+              <button className="btn btn-soft btn-primary w-5/12" type="submit">
+                Sign Up
+              </button>
+            ) : (
+              <span className="loading loading-infinity loading-xl"></span>
+            )}
           </div>
         </form>
       </div>

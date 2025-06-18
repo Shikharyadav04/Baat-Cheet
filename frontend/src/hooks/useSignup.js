@@ -4,7 +4,7 @@ import { useAuthContext } from "../context/AuthContext";
 
 const useSignup = () => {
   const [loading, setLoading] = useState(false);
-  const { selectAuthUser } = useAuthContext();
+  const { setAuthUser } = useAuthContext();
   const signup = async ({
     fullName,
     username,
@@ -45,7 +45,7 @@ const useSignup = () => {
       }
 
       localStorage.setItem("authUser", JSON.stringify(data));
-      selectAuthUser(data);
+      setAuthUser(data);
       // console.log(data);
     } catch (error) {
       toast.error(error.message);
