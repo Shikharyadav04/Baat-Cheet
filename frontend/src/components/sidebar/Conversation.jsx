@@ -4,8 +4,8 @@ const Coversation = () => {
   return (
     <>
       <div className="flex gap-2 items-center rounded-lg p-2 py-3 mt-1  shadow-none transition-shadow duration-300 cursor-pointer hover:shadow-lg hover:shadow-violet-500">
-        <div class="avatar avatar-online">
-          <div class="rounded-full w-12">
+        <div className="avatar avatar-online">
+          <div className="rounded-full w-12">
             <img src="https://img.daisyui.com/images/profile/demo/gordon@192.webp" />
           </div>
         </div>

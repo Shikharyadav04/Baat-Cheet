@@ -7,7 +7,7 @@ const Sidebar = () => {
   return (
     <div className="overflow-y-auto scrollbar-hide  border-r  border-slate-300 flex flex-col">
       <SearchInput />
-      <div class="divider mt-0 w-full"></div>
+      <div className="divider mt-0 w-full"></div>
       <Conversations />
       <LogoutButton />
       {/* <Conversations /> */}
