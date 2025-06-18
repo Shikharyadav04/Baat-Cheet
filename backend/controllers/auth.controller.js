@@ -20,8 +20,7 @@ const signUp = async (req, res) => {
       return res.status(400).json({ error: "User already exist " });
     }
 
-    const boyPic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
-    const girlPic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
+    const pic = `https://ui-avatars.com/api/?name=${username}`;
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
@@ -31,7 +30,7 @@ const signUp = async (req, res) => {
       username,
       gender,
       password: hashedPassword,
-      profilePic: gender === "male" ? boyPic : girlPic,
+      profilePic: pic,
     });
 
     if (newUser) {
