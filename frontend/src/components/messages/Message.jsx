@@ -1,40 +1,54 @@
 import React from "react";
+import { useAuthContext } from "../../context/AuthContext";
+import useConversation from "../../zustand/useConversation";
 
-const Message = () => {
+const Message = ({ message }) => {
+  const { authUser } = useAuthContext();
+  const { selectedConversation } = useConversation();
+
+  // console.log("AuthUser : ", authUser);
+  const fromMe = selectedConversation._id === message.receiverId;
+
+  const formattedTime = new Date(message.createdAt).toLocaleString("en-IN", {
+    day: "2-digit",
+    month: "short",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
   return (
     <div className="mx-2">
-      <div className="chat chat-start">
-        <div className="chat-image avatar">
-          <div className="w-10 rounded-full">
-            <img
-              alt="Tailwind CSS chat bubble component"
-              src="https://img.daisyui.com/images/profile/demo/kenobee@192.webp"
-            />
+      {fromMe ? (
+        <div className="chat chat-end">
+          <div className="chat-image avatar">
+            <div className="w-10 rounded-full">
+              <img alt="Your Avatar" src={authUser.profilePic} />
+            </div>
+          </div>
+          <div className="chat-header">
+            <time className="text-xs opacity-50 ml-1">{formattedTime}</time>
+          </div>
+          <div className="chat-bubble text-white chat-bubble-info my-2 bg-[#2e91d3cd]">
+            {message.message}
           </div>
         </div>
-        <div className="chat-header">
-          Obi-Wan Kenobi
-          <time className="text-xs opacity-50">12:45</time>
-        </div>
-        <div className="chat-bubble">You were the Chosen One!</div>
-        <div className="chat-footer opacity-50">Delivered</div>
-      </div>
-      <div className="chat chat-end">
-        <div className="chat-image avatar">
-          <div className="w-10 rounded-full">
-            <img
-              alt="Tailwind CSS chat bubble component"
-              src="https://img.daisyui.com/images/profile/demo/anakeen@192.webp"
-            />
+      ) : (
+        <div className="chat chat-start">
+          <div className="chat-image avatar">
+            <div className="w-10 rounded-full">
+              <img
+                alt="Receiver Avatar"
+                src={selectedConversation.profilePic}
+              />
+            </div>
           </div>
+          <div className="chat-header">
+            <time className="text-xs opacity-50 ml-1">{formattedTime}</time>
+          </div>
+          <div className="chat-bubble bg-pink-500 my-2">{message.message}</div>
         </div>
-        <div className="chat-header">
-          Anakin
-          <time className="text-xs opacity-50">12:46</time>
-        </div>
-        <div className="chat-bubble">I hate you!</div>
-        <div className="chat-footer opacity-50">Seen at 12:46</div>
-      </div>
+      )}
     </div>
   );
 };

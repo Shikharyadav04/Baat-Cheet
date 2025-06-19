@@ -20,7 +20,7 @@ const signUp = async (req, res) => {
       return res.status(400).json({ error: "User already exist " });
     }
 
-    const pic = `https://ui-avatars.com/api/?name=${username}`;
+    const pic = `https://robohash.org/${username}.png`;
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);

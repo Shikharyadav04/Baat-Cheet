@@ -3,11 +3,14 @@ import Messages from "./Messages";
 import HeaderName from "./HeaderName";
 import InputMessage from "./InputMessage";
 import NoChatSelected from "./NoChatSelected";
+import useConversation from "../../zustand/useConversation";
+import useGetMessages from "../../hooks/useGetMessages";
 const MessageContainer = () => {
-  const isChatSelected = true;
+  const { selectedConversation } = useConversation();
+  const { messages, loading } = useGetMessages();
   return (
     <div className="md:min-w-[450px] flex flex-col flex-1">
-      {isChatSelected ? (
+      {!selectedConversation ? (
         <NoChatSelected />
       ) : (
         <>

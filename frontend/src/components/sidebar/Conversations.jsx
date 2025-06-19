@@ -7,7 +7,7 @@ const Conversations = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
   const { conversations, loading } = useGetConversation();
 
-  console.log(conversations.users);
+  // console.log(conversations.users);
 
   return (
     <div className="p-2 flex flex-col overflow-auto scrollbar-hide">
