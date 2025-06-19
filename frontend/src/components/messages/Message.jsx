@@ -5,6 +5,7 @@ import useConversation from "../../zustand/useConversation";
 const Message = ({ message }) => {
   const { authUser } = useAuthContext();
   const { selectedConversation } = useConversation();
+  const shouldShake = message.shouldShake ? "shake" : "";
 
   // console.log("AuthUser : ", authUser);
   const fromMe = selectedConversation._id === message.receiverId;
@@ -29,7 +30,9 @@ const Message = ({ message }) => {
           <div className="chat-header">
             <time className="text-xs opacity-50 ml-1">{formattedTime}</time>
           </div>
-          <div className="chat-bubble text-white chat-bubble-info my-2 bg-[#2e91d3cd]">
+          <div
+            className={`chat-bubble text-white chat-bubble-info my-2 bg-[#2e91d3cd]`}
+          >
             {message.message}
           </div>
         </div>
@@ -46,7 +49,9 @@ const Message = ({ message }) => {
           <div className="chat-header">
             <time className="text-xs opacity-50 ml-1">{formattedTime}</time>
           </div>
-          <div className="chat-bubble bg-pink-500 my-2">{message.message}</div>
+          <div className={` ${shouldShake} chat-bubble bg-pink-500 my-2"`}>
+            {message.message}
+          </div>
         </div>
       )}
     </div>
