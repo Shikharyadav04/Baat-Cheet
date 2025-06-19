@@ -4,7 +4,7 @@ import useLogout from "../../hooks/useLogout.js";
 const LogoutButton = () => {
   const { loading, logout } = useLogout();
   return (
-    <div className="mt-1 pl-1">
+    <div className="mt-1 pl-1 ">
       {!loading ? (
         <button
           onClick={() => logout()}
