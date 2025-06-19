@@ -19,9 +19,7 @@ const useSendMessage = () => {
       const data = await res.json();
       if (data.error) throw new Error(data.error);
       //   console.log(data);
-      setMessages((prev) =>
-        Array.isArray(prev) ? [...prev, data.newMessage] : [data.newMessage]
-      );
+      setMessages([...messages, data]);
       //   setMessages([...(messages || []), data.newMessage]);
       //   console.log(messages);
     } catch (error) {
