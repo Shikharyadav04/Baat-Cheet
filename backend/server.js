@@ -7,7 +7,7 @@ import authRoutes from "./routes/auth.routes.js";
 import userRoutes from "./routes/user.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import connectDb from "./config/db.js";
-import { app, server } from "./socket/Socket.js";
+import { app, server } from "./socket/socket.js";
 
 dotenv.config();
 const __dirname = path.resolve();
